@@ -10,6 +10,7 @@ class DecimalForm(MycroftSkill):
     @intent_file_handler('form.decimal.intent')
     def handle_form_decimal(self, message):
         expression_num = message.data.get('expression_num')
+        expression_num = expression_num.replace('over', '/')
         num, den = expression_num.split( '/' )
         answer_number = str(round((float(num)/float(den)), 2))
 
