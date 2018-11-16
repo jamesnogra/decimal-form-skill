@@ -11,10 +11,16 @@ class DecimalForm(MycroftSkill):
         num, den = expression_num.split( '/' )
         answer_number = str(round((float(num)/float(den)), 2))
 
+        self.bus.once("recognizer_loop:audio_output_start",
+                          self.enclosure.mouth_text(answer_number))
+        self.enclosure.deactivate_mouth_events()
         self.speak_dialog('form.decimal', data={
-            'expression_num': expression_num,
+            'expression_num': expression_num.replace('/', ' over '),
             'answer_number': answer_number
         })
+        time.sleep(12)
+        self.enclosure.activate_mouth_events()
+        self.enclosure.mouth_reset()
 
 
 def create_skill():
