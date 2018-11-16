@@ -22,8 +22,8 @@ class DecimalForm(MycroftSkill):
             'answer_number': answer_number
         })
 
-        #reset mouth events after 5 seconds
-        time.sleep(5)
+        #reset mouth events after 12 seconds
+        time.sleep(12)
         self.enclosure.activate_mouth_events()
         self.enclosure.mouth_reset()
 
