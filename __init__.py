@@ -18,9 +18,9 @@ class DecimalForm(MycroftSkill):
             'expression_num': expression_num.replace('/', ' over '),
             'answer_number': answer_number
         })
-        #time.sleep(5)
-        #self.enclosure.activate_mouth_events()
-        #self.enclosure.mouth_reset()
+        time.sleep(5)
+        self.enclosure.activate_mouth_events()
+        self.enclosure.mouth_reset()
 
 
 def create_skill():
