@@ -1,1 +1,1 @@
-{{first_number}} over {{second_number}} is equal to {{answer_number}}
+{{expression_num}} is equal to {{answer_number}}

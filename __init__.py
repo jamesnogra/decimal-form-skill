@@ -7,14 +7,13 @@ class DecimalForm(MycroftSkill):
 
     @intent_file_handler('form.decimal.intent')
     def handle_form_decimal(self, message):
-        first_number = message.data.get('first_number')
-        second_number = message.data.get('second_number')
-        answer_number = str(round(int(first_number) / int(second_number)), 2)
+        expression_num = message.data.get('expression_num')
+        num, den = expression_num.split( '/' )
+        answer_number = str(round((float(num)/float(den))), 2)
 
         self.speak_dialog('form.decimal', data={
-            'second_number': second_number,
-            'answer_number': answer_number,
-            'first_number': first_number
+            'expression_num': expression_num,
+            'answer_number': answer_number
         })
 
 
