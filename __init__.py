@@ -1,3 +1,5 @@
+import time
+
 from mycroft import MycroftSkill, intent_file_handler
 
 
@@ -11,14 +13,17 @@ class DecimalForm(MycroftSkill):
         num, den = expression_num.split( '/' )
         answer_number = str(round((float(num)/float(den)), 2))
 
-        #self.bus.once("recognizer_loop:audio_output_start", self.enclosure.mouth_text(answer_number))
+        #display result instead of mouth
         self.enclosure.mouth_text(answer_number)
         self.enclosure.deactivate_mouth_events()
+
         self.speak_dialog('form.decimal', data={
             'expression_num': expression_num.replace('/', ' over '),
             'answer_number': answer_number
         })
-        #time.sleep(5)
+
+        #reset mouth events after 5 seconds
+        time.sleep(5)
         self.enclosure.activate_mouth_events()
         self.enclosure.mouth_reset()
 
