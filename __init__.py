@@ -9,7 +9,7 @@ class DecimalForm(MycroftSkill):
     def handle_form_decimal(self, message):
         first_number = message.data.get('first_number')
         second_number = message.data.get('second_number')
-        answer_number = ''
+        answer_number = int(first_number) / int(second_number)
 
         self.speak_dialog('form.decimal', data={
             'second_number': second_number,
